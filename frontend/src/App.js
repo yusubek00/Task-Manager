@@ -3,9 +3,8 @@ import './App.css';
 import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = "https://task-manager-tq3g.onrender.com/api/tasks";
-//const API_URL = "http://localhost:5500"; use if local hosting
-
+// const API_URL = "https://task-manager-tq3g.onrender.com/api/tasks";
+const API_URL = "http://localhost:5500/api/tasks"; //use if local hosting
 function App() {
   const [ tasks, setTasks ] = useState([]); // State to store tasks
   const [ newTask,  setNewTask ] = useState(""); //state for input field
@@ -34,7 +33,7 @@ function App() {
   // Delete a Task
   const deleteTask = (id) => {
     axios.delete(`${API_URL}/${id}`)
-      .then(() => setTasks(tasks.filter(task => task.id != id)) )
+      .then(() => setTasks(tasks.filter(task => task.id !== id)) )
       .catch(error => console.error("Error deleting task:", error));
   }
 

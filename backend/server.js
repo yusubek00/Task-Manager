@@ -1,21 +1,25 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const taskRoutes = require('./routes/tasks');
-app.use(taskRoutes);
+app.use('/api/tasks', taskRoutes);
+
+app.get("/", (req,res) => {
+    res.send("API is running");
+});
 
 //      local hosting PORT
-// const PORT = 5500;
-// app.listen(PORT, () => {
-//     console.log(`Backend is running at PORT ${PORT}`)
-// });
-
-//Hosting on render.com
-const PORT = process.env.PORT;
+const PORT = 5500;
 app.listen(PORT, () => {
     console.log(`Backend is running at PORT ${PORT}`)
 });
+
+// //Hosting on render.com
+// const PORT = process.env.PORT;
+// app.listen(PORT, () => {
+//     console.log(`Backend is running at PORT ${PORT}`)
+// });

@@ -15,7 +15,10 @@ function App() {
     console.log("useEffect is triggered");
 
     axios.get(API_URL)
-      .then(response => setTasks(response.data))
+      .then(response => {
+        console.log("API response:", response.data);
+        setTasks(response.data);
+      })
       .catch(error => console.error("Error fetching tasks:", error));
   }, []);
 

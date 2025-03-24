@@ -8,8 +8,14 @@ app.use(express.json());
 const taskRoutes = require('./routes/tasks');
 app.use(taskRoutes);
 
-const PORT = 5000;
+//      local hosting PORT
+// const PORT = 5500;
+// app.listen(PORT, () => {
+//     console.log(`Backend is running at PORT ${PORT}`)
+// });
+
+//Hosting on render.com
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Backend is running at PORT ${PORT}`)
 });
-

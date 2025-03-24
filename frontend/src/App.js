@@ -3,8 +3,8 @@ import './App.css';
 import React, {useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = "https://task-manager-tq3g.onrender.com";
-const API_URL2 = "http://localhost:5500";
+const API_URL = "https://task-manager-tq3g.onrender.com/api/tasks";
+//const API_URL = "http://localhost:5500"; use if local hosting
 
 function App() {
   const [ tasks, setTasks ] = useState([]); // State to store tasks
@@ -12,6 +12,8 @@ function App() {
 
   // Fetch Tasks from Backend on Page Load
   useEffect(() => {
+    console.log("useEffect is triggered");
+
     axios.get(API_URL)
       .then(response => setTasks(response.data))
       .catch(error => console.error("Error fetching tasks:", error));
